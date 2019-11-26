@@ -7,7 +7,7 @@ permalink: /overview/google-data-policy/
 Keboola Connection, our platform, is the host of smaller application components that interact with various Google APIs and services. 
 It also contains Storage, a database-like component where users store their data.
 
-Watch the following introduction video for basic info about our platform:
+Watch the following introduction [video](https://youtu.be/g-VBfkV4xfc) for basic info about our platform:
 
 The components working directly with Google APIs and services are divided into two categories: extractors and writers.
 
