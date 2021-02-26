@@ -277,7 +277,101 @@ in the branch where they took place.*
 
 Now let’s do the same thing with tables to see how table storage behaves in Development/Production Mode. 
 
-*To be continued.*
+## Working with tables
 
+### Prepare the production configurations 
 
+Switch back to production. 
 
+Our business case is now to prepare a pipeline that pulls data about bitcoin prices and store it in storage. Then we create a transformation that stores only the last 5 values in the out stage. So let's prepare the production configurations.  
+
+First we need to pull the bitcoin data. To simplify this, we will download a [prepared csv file](/transformations/dev-prod-mode/bitcoin_price.csv) using HTTP extractor. 
+
+#### Set up http extractor in production
+
+Create new HTTP extractor configuration, fill in `Base URL` to `https://help.keboola.com`. Then add new table to the extractor, named `bitcoin_price` and fill the `Path` to `/transformations/dev-prod-mode/bitcoin_price.csv`. `Table Name` should be `bitcoin_price`. 
+
+Run the extractor and verify that a new table `in.c-keboola-ex-http-682373219.bitcoin_price` was created. *Note, that the number in your bucket name will be different.* 
+
+#### Prepare a transformation in production
+
+First create a new Snowflake transformation, named `Bitcoin`. 
+
+In the input mapping fill in the `bitcoin_price` table that you created using HTTP extractor. In output mapping add `top5` table that will be created in the transformation. 
+
+Finally, add a new code block named `TOP` with following query.  
+
+```SQL
+CREATE TABLE "top5" AS SELECT * FROM "bitcoin_price" ORDER BY PRICE DESC LIMIT 5;
+```
+
+Save the transformation and run it. Then verify that there is a new table `out.c-bitcoin.top5` containing 5 values from the source data - dates and amounts when bitcoin had the most value. 
+
+### Working with tables in development branch
+
+You received a business case - the amount of 5 top values is too low, so it should be 10 now. Also you were given access to your company's bitcoin account history and you're tasked with pulling data from there and converting the amounts of bitcoin to dolar amounts based on the value of bitcoin on given day. 
+To do that you first need to download the account data. Again we [prepared csv file](/transformations/dev-prod-mode/bitcoin_transactions.csv) for you.
+
+First create a new development branch so that you don't mess up production. Name it appropriately - for example `Business Case 2`. 
+
+#### Change the transformation
+
+Let's start with the easier task - we need to change the transformation so that it return TOP 10 instead of TOP 5. In your branch, navigate to Transformations. You can see the transformation you created in production, but no worries - it's a development version that you can safely change. 
+
+Change the query to end with ` LIMIT 10` and save. 
+
+You can now switch back to production and check that your production transformation still shows `LIMIT 5`. Cool, right? 
+
+Get back to your `Business Case 2` branch and navigate back to the transformation. Try running it. Examine the **Mapping** section in the job detail. 
+
+![Mapping in branch](/transformations/dev-prod-mode/mapping-in-branch.png)
+
+Notice, how even though you did not run the extractor in this branch, the input data are still loaded from the `bitcoin_price`table. What happens is that Keboola checks whether a developement branch version of the table exists and if it does not, it **falls back to read from production version**. Also notice that in the job in Mapping section the output shows small yellow branch icon and the name of the bucket is prefixed with a number. When you are in branch and component wants to write to storage, it **automatically creates a duplicate bucket whose name is prefixed with branch ID**, so it won't overwrite your production data. Examine the table and check that it indeed has 10 values as it should. 
+
+This part of the business case is done. Let's get to the second part. 
+
+#### Download the transactions
+
+In the branch navigate to your existing HTTP extractor configuration and add a new table named `bitcoin_transactions` and fill `Path` with `/transformations/dev-prod-mode/bitcoin_transactions.csv`. Save and run the extractor. 
+
+Examine the job outputs. There are again tables with branch icon in bucket prefixed with a number. That signifies that the output was stored in branch context, keeping your production data intact. 
+
+![Extractor output](/transformations/dev-prod-mode/extractor-output.png)
+
+If you want to, you can go to Storage explorer to see that the created buckets. Also you can switch back to production and in Storage explorer you'll see a switch to show development buckets. 
+
+![Storage explorer in production](/transformations/dev-prod-mode/storage-dev-buckets.png)
+
+*Note: There is only one storage space in your project, development buckets are created with a prefix in name, but are stored along normal buckets and are visible in production as well as in branch*
+
+Let's now run the transformation again. What do you think will happen? 
+
+If you thought it will use the `bitcoin_prices` table from your branch you were right. 
+
+![Input mapping from branch data](/transformations/dev-prod-mode/input-mapping-from-branch.png)
+
+Keboola checked whether development branch version of the bucket exists and as it did, it used it. 
+
+#### Extend the transformation
+
+Now add a second code block that will use the transaction data named `Dollar values of transactions`. Insert following SQL
+
+```sql
+CREATE TABLE "dollar_btc_transactions" AS 
+SELECT 
+    BT.DATE, 
+    BT.AMOUNT AS BTC_AMOUNT, 
+    BP.PRICE AS RATE,  
+    BT.AMOUNT * BP.PRICE AS USD_AMOUNT
+FROM 
+    "bitcoin_transactions" AS BT
+LEFT JOIN 
+    "bitcoin_price" AS BP
+        ON BP.DATE = BT.DATE;
+```
+
+For this to make it out of the transformation you need to add it to output mapping as well. 
+
+![Input mapping from branch data](/transformations/dev-prod-mode/output-mapping-branch-transformation.png)
+
+Now you're ready and can run the transformation. 
