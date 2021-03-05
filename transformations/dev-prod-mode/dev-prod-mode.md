@@ -21,7 +21,9 @@ with us while we polish all necessities. Any feedback is welcome at [https://ide
 ## Before You Start
 To request to be a beta tester for this feature, please ask via the support button in your project.
 
-In the next steps, we will create and configure a transformation to demonstrate the modes on.
+In the next steps, we will create and configure various components to demonstrate the different aspects of branches.
+
+## Working with files
 
 ###  Create Transformation
 In your testing project, create a new **Python** transformation and name it, for instance, *Testing dev/prod mode*. 
@@ -84,7 +86,7 @@ After the job is finished, go to **Storage -- Files**, where you can see the fil
 
 Now you have everything ready to start testing the Development/Production Mode.
 
-## Create Development Branch
+### Create Development Branch
 Imagine you're tasked with changing the name of the output file and adding a bit of logging to the transformation. 
 You're hesitant to do this on a live and business critical transformation in production. This is where 
 Development/Production Mode comes in, giving you the option to test the changes safely before merging them to 
@@ -173,7 +175,7 @@ To see a detailed diff of the changes, click the three dots on the right and the
 {: .image-popup}
 ![Screenshot - Config Changes - Variable](/transformations/dev-prod-mode/18-diff-config-changes-var.png)
 
-## Switch Back to Production
+### Switch Back to Production
 Let’s go back to production to see that by changing the transformation in the development branch, we did not 
 affect the production transformation in any way. 
 
@@ -197,7 +199,7 @@ tag `demoOutput` without any prefix.
 {: .image-popup}
 ![Screenshot - Storage File in Production](/transformations/dev-prod-mode/21-storage-files-prod.png)
 
-##  Simultaneous Changes
+###   Simultaneous Changes
 Before we proceed to merging the development branch to the production project, there is one more scenario we need 
 to mention here. While you are working in your development branch, someone else might be doing changes to your 
 production project at the same time.
@@ -224,7 +226,7 @@ The conflict here means that the production project changed while we were workin
 the development project would overwrite any changes made in production. In our case, `Hello tester!` would become
 `Hello world!` again.
 
-### Resolve Conflicts
+#### Resolve Conflicts
 To resolve the conflict and merge the development branch to production safely without overwriting anything new, 
 you need to manually replicate the production change in the development branch and turn `Hello world!` to `Hello 
 tester!` too.
@@ -250,7 +252,7 @@ and
 {: .image-popup}
 ![Screenshot - Config Changes - Shared Code](/transformations/dev-prod-mode/17-diff-config-changes-shared-code.png)
 
-## Merge to Production
+### Merge to Production
 Now click **MERGE TO PRODUCTION** and confirm. If the merge is successful, you will be taken to your production 
 project. The development branch is deleted when merged. 
 
