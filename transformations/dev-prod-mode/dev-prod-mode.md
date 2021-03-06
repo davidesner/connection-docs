@@ -90,16 +90,16 @@ Your new branch will appear right below the name of your production project.
 
 Let's start with the easier task - we need to change the transformation so that it return TOP 10 instead of TOP 5. In your branch, navigate to Transformations. You can see the transformation you created in production, but no worries - it's a development version that you can safely change.
 
-Change the query to end with ` LIMIT 10` and save.
+Change the query to end with `LIMIT 10` and save.
 
 You can now switch back to production and check that your production transformation still shows `LIMIT 5`. Cool, right?
 
-Get back to your `Business Case 2` branch and navigate back to the transformation. Try running it. Examine the **Mapping** section in the job detail.
+Get back to your `My dev branch` branch and navigate back to the transformation. Try running it. Examine the **Mapping** section in the job detail.
 
 {: .image-popup}
 ![Mapping in branch](/transformations/dev-prod-mode/mapping-in-branch.png)
 
-Notice, how even though you did not run the extractor in this branch, the input data are still loaded from the `bitcoin_price`table. What happens is that Keboola checks whether a developement branch version of the table exists and if it does not, it **falls back to read from production version**. Also notice that in the job in Mapping section the output shows small yellow branch icon and the name of the bucket is prefixed with a number. When you are in branch and component wants to write to storage, it **automatically creates a duplicate bucket whose name is prefixed with branch ID**, so it won't overwrite your production data. Examine the table and check that it indeed has 10 values as it should.
+Notice how even though you did not run the extractor in this branch, the input data are still loaded from the `bitcoin_price`table. What happens is that Keboola checks whether a developement branch version of the table exists and if it does not, it **falls back to read from production version**. Also notice that in the job in Mapping section the output shows small yellow branch icon and the name of the bucket is prefixed with a number. When you are in branch and component wants to write to storage, it **automatically creates a duplicate bucket whose name is prefixed with branch ID**, so it won't overwrite your production data. Examine the table and check that it indeed has 10 values as it should.
 
 This part of the business case is done. Let's get to the second part.
 
