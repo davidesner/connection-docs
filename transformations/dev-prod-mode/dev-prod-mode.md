@@ -137,7 +137,7 @@ Keboola checked whether development branch version of the bucket exists and as i
 
 #### Extend the transformation
 
-Now add a second code block that will use the transaction data named `Dollar values of transactions`. Insert following SQL
+Now add a second code block named `Dollar values of transactions` and insert the following SQL
 
 ```sql
 CREATE TABLE "dollar_btc_transactions" AS 
@@ -153,12 +153,19 @@ LEFT JOIN
         ON BP.DATE = BT.DATE;
 ```
 
-For this to make it out of the transformation you need to add it to output mapping as well.
+For the data to make it out of the transformation you need to add the newly created table to output mapping as well.
 
 {: .image-popup}
 ![Input mapping from branch data](/transformations/dev-prod-mode/output-mapping-branch-transformation.png)
 
 Now you're ready and can run the transformation. Examine the results.
+
+{: .image-popup}
+![Input mapping from branch data](/transformations/dev-prod-mode/transformation-branch-output.png)
+
+As you can see, this run of the transformation accessed only branch buckets. It used the new data from HTTP extractor as input and stored the output in two branch buckets. You can also examine the data in the tables to see that indeed you createed a list of transactions with their dollar amounts.  
+
+This means that the second part of your task is done. All the work you did is now constrained in your branch though. And in production there is still the old code creating the TOP5 list. So the next step will be to merge the changes from your branch. 
 
 ## Working with files
 
