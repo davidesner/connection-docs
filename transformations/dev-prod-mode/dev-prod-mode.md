@@ -96,6 +96,7 @@ You can now switch back to production and check that your production transformat
 
 Get back to your `Business Case 2` branch and navigate back to the transformation. Try running it. Examine the **Mapping** section in the job detail.
 
+{: .image-popup}
 ![Mapping in branch](/transformations/dev-prod-mode/mapping-in-branch.png)
 
 Notice, how even though you did not run the extractor in this branch, the input data are still loaded from the `bitcoin_price`table. What happens is that Keboola checks whether a developement branch version of the table exists and if it does not, it **falls back to read from production version**. Also notice that in the job in Mapping section the output shows small yellow branch icon and the name of the bucket is prefixed with a number. When you are in branch and component wants to write to storage, it **automatically creates a duplicate bucket whose name is prefixed with branch ID**, so it won't overwrite your production data. Examine the table and check that it indeed has 10 values as it should.
@@ -110,10 +111,12 @@ In the branch navigate to your existing HTTP extractor configuration and add a n
 
 Examine the job outputs. There are again tables with branch icon in bucket prefixed with a number. That signifies that the output was stored in branch context, keeping your production data intact.
 
+{: .image-popup}
 ![Extractor output](/transformations/dev-prod-mode/extractor-output.png)
 
 If you want to, you can go to Storage explorer to see that the created buckets. Also you can switch back to production and in Storage explorer you'll see a switch to show development buckets.
 
+{: .image-popup}
 ![Storage explorer in production](/transformations/dev-prod-mode/storage-dev-buckets.png)
 
 *Note: There is only one storage space in your project, development buckets are created with a prefix in name, but are stored along normal buckets and are visible in production as well as in branch*
@@ -122,6 +125,7 @@ Let's now run the transformation again. What do you think will happen?
 
 If you thought it will use the `bitcoin_prices` table from your branch you were right.
 
+{: .image-popup}
 ![Input mapping from branch data](/transformations/dev-prod-mode/input-mapping-from-branch.png)
 
 Keboola checked whether development branch version of the bucket exists and as it did, it used it.
@@ -146,6 +150,7 @@ LEFT JOIN
 
 For this to make it out of the transformation you need to add it to output mapping as well.
 
+{: .image-popup}
 ![Input mapping from branch data](/transformations/dev-prod-mode/output-mapping-branch-transformation.png)
 
 Now you're ready and can run the transformation. Examine the results.
