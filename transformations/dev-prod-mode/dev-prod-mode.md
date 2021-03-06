@@ -105,25 +105,30 @@ This part of the business case is done. Let's get to the second part.
 
 #### Download the transactions
 
-To do that you first need to download the account data. Again we [prepared csv file](/transformations/dev-prod-mode/bitcoin_transactions.csv) for you.
+Second part of your task is to produce a list with amount of BTC and USD based on a list of transactions from your account. So you need to download the account data first. Again we [prepared csv file](/transformations/dev-prod-mode/bitcoin_transactions.csv) for you.
 
-In the branch navigate to your existing HTTP extractor configuration and add a new table named `bitcoin_transactions` and fill `Path` with `/transformations/dev-prod-mode/bitcoin_transactions.csv`. Save and run the extractor.
+In the branch navigate to your existing HTTP extractor configuration and add a new table named `bitcoin_transactions` and fill **Path** with `/transformations/dev-prod-mode/bitcoin_transactions.csv`. Save and run the extractor.
 
 Examine the job outputs. There are again tables with branch icon in bucket prefixed with a number. That signifies that the output was stored in branch context, keeping your production data intact.
 
 {: .image-popup}
 ![Extractor output](/transformations/dev-prod-mode/extractor-output.png)
 
-If you want to, you can go to Storage explorer to see that the created buckets. Also you can switch back to production and in Storage explorer you'll see a switch to show development buckets.
+If you want to, you can go to Storage explorer to see that the created buckets are shown there with an icon as well.
+
+{: .image-popup}
+![Extractor output](/transformations/dev-prod-mode/dev-branch-storage.png)
+
+Also you can switch back to production and in Storage explorer you'll see a switch to show development buckets.
 
 {: .image-popup}
 ![Storage explorer in production](/transformations/dev-prod-mode/storage-dev-buckets.png)
 
-*Note: There is only one storage space in your project, development buckets are created with a prefix in name, but are stored along normal buckets and are visible in production as well as in branch*
+*Note: There is only one storage space in your project, development buckets are created with a prefix in name, but are stored along normal buckets and are visible in production as well as in branch. You can see all buckets from all development branches in production.*
 
-Let's now run the transformation again. What do you think will happen?
+Let's run the transformation again. What do you think will happen?
 
-If you thought it will use the `bitcoin_prices` table from your branch you were right.
+If you thought it will use the `bitcoin_prices` table from your branch as input, you were right.
 
 {: .image-popup}
 ![Input mapping from branch data](/transformations/dev-prod-mode/input-mapping-from-branch.png)
