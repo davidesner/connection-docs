@@ -86,10 +86,6 @@ Your new branch will appear right below the name of your production project.
 {: .image-popup}
 ![Screenshot - Created Development Branch](/transformations/dev-prod-mode/10-dev-branch-created.png)
 
-
-
-First create a new development branch so that you don't mess up production. Name it appropriately - for example `Business Case 2`.
-
 #### Change the transformation
 
 Let's start with the easier task - we need to change the transformation so that it return TOP 10 instead of TOP 5. In your branch, navigate to Transformations. You can see the transformation you created in production, but no worries - it's a development version that you can safely change.
