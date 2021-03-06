@@ -53,8 +53,32 @@ Save the transformation and run it. Then verify that there is a new table `out.c
 
 ### Working with tables in development branch
 
-You received a business case - the amount of 5 top values is too low, so it should be 10 now. Also you were given access to your company's bitcoin account history and you're tasked with pulling data from there and converting the amounts of bitcoin to dolar amounts based on the value of bitcoin on given day.
-To do that you first need to download the account data. Again we [prepared csv file](/transformations/dev-prod-mode/bitcoin_transactions.csv) for you.
+Your task is following: The amount of 5 top values is too low, so it should be 10. Also, you were given access to your company's bitcoin account history and you're tasked with converting the amounts of bitcoin to dolar amounts based on the value of bitcoin on the given day.
+
+You're hesitant to do this on a live and business critical transformation in production. This is where
+branches come in, giving you the option to test the changes safely before merging them to
+production.
+
+#### Create a new branch
+
+To create a new branch, click on your project’s name at the top of the screen (for the purposes of this tutorial,
+the production project is called *Dev branches demo*). Then click on the green icon **New** displayed next to
+your project’s name.
+
+{: .image-popup}
+![Screenshot - Create Development Branch](/transformations/dev-prod-mode/08-create-dev-branch.png)
+
+Name your new development branch, for example, *My dev branch*, and click **Create Development Branch**  to open it.
+
+{: .image-popup}
+![Screenshot - Name Development Branch](/transformations/dev-prod-mode/09-name-dev-branch.png)
+
+Your new branch will appear right below the name of your production project.
+
+{: .image-popup}
+![Screenshot - Created Development Branch](/transformations/dev-prod-mode/10-dev-branch-created.png)
+
+
 
 First create a new development branch so that you don't mess up production. Name it appropriately - for example `Business Case 2`.
 
@@ -75,6 +99,8 @@ Notice, how even though you did not run the extractor in this branch, the input 
 This part of the business case is done. Let's get to the second part.
 
 #### Download the transactions
+
+To do that you first need to download the account data. Again we [prepared csv file](/transformations/dev-prod-mode/bitcoin_transactions.csv) for you.
 
 In the branch navigate to your existing HTTP extractor configuration and add a new table named `bitcoin_transactions` and fill `Path` with `/transformations/dev-prod-mode/bitcoin_transactions.csv`. Save and run the extractor.
 
@@ -185,27 +211,8 @@ After the job is finished, go to **Storage -- Files**, where you can see the fil
 Now you have everything ready to start testing the Development/Production Mode.
 
 ### Create Development Branch
-Imagine you're tasked with changing the name of the output file and adding a bit of logging to the transformation. 
-You're hesitant to do this on a live and business critical transformation in production. This is where 
-Development/Production Mode comes in, giving you the option to test the changes safely before merging them to 
-production. 
 
-To create a new branch, click on your project’s name at the top of the screen (for the purposes of this tutorial, 
-the production project is called *Dev branches demo*). Then click on the green icon **New** displayed next to 
-your project’s name. 
-
-{: .image-popup}
-![Screenshot - Create Development Branch](/transformations/dev-prod-mode/08-create-dev-branch.png)
-
-Name your new development branch, for example, *My dev branch*, and click **Create Development Branch**  to open it.
-
-{: .image-popup}
-![Screenshot - Name Development Branch](/transformations/dev-prod-mode/09-name-dev-branch.png)
-
-Your new branch will appear right below the name of your production project.
-
-{: .image-popup}
-![Screenshot - Created Development Branch](/transformations/dev-prod-mode/10-dev-branch-created.png)
+Your next task is changing the name of the output file and adding a bit of logging to the transformation. Let's start by creating a new branch for this. 
 
 Once inside the new development branch, let’s run the same transformation you ran in the production branch. 
 Go to **Transformations**, select the transformation *Testing dev/prod mode* and run it. 
