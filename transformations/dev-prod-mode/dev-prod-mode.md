@@ -27,13 +27,16 @@ In the next steps, we will create and configure various components to demonstrat
 
 ### Prepare the production configurations
 
-Our business case is now to prepare a pipeline that pulls data about bitcoin prices and store it in storage. Then we create a transformation that stores only the last 5 values in the out stage. So let's prepare the production configurations.
+We'll start with a data pipeline that pulls data about bitcoin prices creates a list of TOP 5 dates when the price was the highest. Let's prepare the production configurations, so that we can try working with branches later. 
 
 First we need to pull the bitcoin data. To simplify this, we will download a [prepared csv file](/transformations/dev-prod-mode/bitcoin_price.csv) using HTTP extractor.
 
 #### Set up http extractor in production
 
-Create new HTTP extractor configuration, fill in `Base URL` to `https://help.keboola.com`. Then add new table to the extractor, named `bitcoin_price` and fill the `Path` to `/transformations/dev-prod-mode/bitcoin_price.csv`. `Table Name` should be `bitcoin_price`.
+Create new HTTP extractor configuration, fill in **Base URL** to `https://help.keboola.com`. Then add new table to the extractor, named `bitcoin_price` and fill the **Path** to `/transformations/dev-prod-mode/bitcoin_price.csv`. **Table Name** should be `bitcoin_price`.
+
+{: .image-popup}
+![Prepared HTTP extractor](/transformations/dev-prod-mode/http-ex-prod-set-up.png)
 
 Run the extractor and verify that a new table `in.c-keboola-ex-http-682373219.bitcoin_price` was created. *Note, that the number in your bucket name will be different.*
 
@@ -49,7 +52,12 @@ Finally, add a new code block named `TOP` with following query.
 CREATE TABLE "top5" AS SELECT * FROM "bitcoin_price" ORDER BY PRICE DESC LIMIT 5;
 ```
 
+{: .image-popup}
+![Prepared HTTP extractor](/transformations/dev-prod-mode/transformation-prod-set-up.png)
+
 Save the transformation and run it. Then verify that there is a new table `out.c-bitcoin.top5` containing 5 values from the source data - dates and amounts when bitcoin had the most value.
+
+Now you have the production set up and we can give branches a test run. 
 
 ### Working with tables in development branch
 
@@ -144,8 +152,7 @@ For this to make it out of the transformation you need to add it to output mappi
 
 ![Input mapping from branch data](/transformations/dev-prod-mode/output-mapping-branch-transformation.png)
 
-Now you're ready and can run the transformation.
-
+Now you're ready and can run the transformation. Examine the results.
 
 ## Working with files
 
