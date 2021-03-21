@@ -260,6 +260,22 @@ items:
       - url: /components/scaffolds/
         title: Scaffolds
 
+      - url: /components/development-branches/
+        title: Development branches
+        items:
+
+        - url: /components/development-branches/tables/
+          title: Tables
+          items:
+            - title: Working with files in development branch
+              url: /components/development-branches/tables/in-branch/
+
+        - url: /components/development-branches/files/
+          title: Files
+          items:
+            - title: Working with files in development branch
+              url: /components/development-branches/files/in-branch/
+
       - url: /components/ip-addresses/
         title: IP Addresses
 
