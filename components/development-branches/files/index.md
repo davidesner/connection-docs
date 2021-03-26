@@ -25,10 +25,12 @@ in Python for the transformation. Name it *Create a file*.
 *Name:* `Create a file`
 <br> *Type:* `Python`
 <br> *Shared code:*
-{% highlight sql %}
-f = open("out/files/{{outFile}}", "a")
-f.write("{{outFileContent}}")
+{% highlight python %}
+{% raw %}
+f = open("out/files/{{ outFile }}", "a")
+f.write("{{ outFileContent }}")
 f.close ()
+{% endraw %}
 {% endhighlight %}
 
 Finally, enter two out variables `outFile`, `outFileContent`, and click **Create Share Code**.

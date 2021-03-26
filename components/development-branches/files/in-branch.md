@@ -59,3 +59,27 @@ Now change the name of the output file. To do that, go to your transformation an
 
 {: .image-popup}
 ![Screenshot - Edit Variable in Development Branch](/components/development-branches/15-edit-var-in-dev.png)
+
+## Switch Back to Production
+Let’s go back to production to see that by changing the transformation in the development branch, we did not
+affect the production transformation in any way.
+
+Go to **Transformations** and check **Shared Codes** to see that there is still the original version of
+`Create a file` that we created at the beginning. It was not overwritten by the changes we made in the development
+branch.
+
+{: .image-popup}
+![Screenshot - Check Shared Code In Production](/components/development-branches/19-check-shared-code.png)
+
+Then go to your production transformation and check **Block 1** to see that there, too, is the original short
+version of the shared code.
+
+{: .image-popup}
+![Screenshot - Check Variable In Production](/components/development-branches/20-check-block1.png)
+
+To make sure nothing has changed, run the transformation in production again. When it finishes, go to **Storage --
+Files**. You can see that `demoFile.txt` was created. Because it ran in production mode, it was assigned the
+tag `demoOutput` without any prefix.
+
+{: .image-popup}
+![Screenshot - Storage File in Production](/components/development-branches/21-storage-files-prod.png)

@@ -31,10 +31,12 @@ First create a new Snowflake transformation, named `Bitcoin`.
 
 In the **Table Input Mapping** section fill in the `bitcoin_price` table that you created using HTTP extractor. In **Table Output Mapping** add `top5` table that will be created in the transformation.
 
-Finally, add a new code block named `TOP` with following query.
+Finally, add a new code to `Block 1` named `TOP` with following query.
 
 ```SQL
 CREATE TABLE "top5" AS SELECT * FROM "bitcoin_price" ORDER BY PRICE DESC LIMIT 5;
+
+ALTER TABLE "top5" DROP COLUMN "_timestamp";
 ```
 
 {: .image-popup}

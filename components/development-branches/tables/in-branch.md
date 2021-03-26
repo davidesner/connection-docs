@@ -46,9 +46,13 @@ Get back to your `My dev branch` branch and navigate back to the transformation.
 {: .image-popup}
 ![Mapping in branch](/components/development-branches/mapping-in-branch.png)
 
-Notice how in the **Input** section even though you did not run the extractor in this branch, the data are still loaded from the `bitcoin_price` table. What happens is that **Keboola checks whether a developement branch version of the table exists** and if it does not, it **falls back to read from production version**. Also notice that **Output** shows small yellow branch icon, and the name of the bucket is prefixed with a number. When you are in branch and component wants to write to storage, it **automatically creates a duplicate bucket whose name is prefixed with branch ID**, so it won't overwrite your production data. Examine the table and check that it indeed has 10 values as it should.
+Notice how in the **Input** section even though you did not run the extractor in this branch, the data are still loaded from the `bitcoin_price` table. What happens is that **Keboola checks whether a developement branch version of the table exists** and if it does not, it **falls back to read from production version**. 
 
-This part of the business case is done. Let's get to the second part.
+Also notice that **Output** shows small yellow branch icon, and the name of the bucket is prefixed with a number - `1400-bitcoin`. When you are in branch and component wants to write to storage, Keboola **automatically creates a duplicate bucket prefixed with branch ID**, so it won't overwrite your production data. Examine the table and check that it indeed has 10 values as it should.
+
+*Note: The number in bucket name will be different for you as you have different branch ID.*
+
+This part of your task is done. Let's get to the second part.
 
 ## Download the transactions
 
@@ -56,7 +60,7 @@ Second part of your task is to produce a list of transaction showing the amount 
 
 In the branch navigate to your existing HTTP extractor configuration and add a new table named `bitcoin_transactions` and fill **Path** with `/transformations/dev-prod-mode/bitcoin_transactions.csv`. Save and run the extractor.
 
-Examine the job outputs. There are tables with branch icon in a bucket prefixed with a number. That signifies that the output was stored in branch context, keeping your production data intact.
+Examine the job outputs. There are tables with branch icon in a bucket prefixed with a number. As we've already shown, this signifies that the output was stored in branch context, keeping your production data intact.  
 
 {: .image-popup}
 ![Extractor output](/components/development-branches/extractor-output.png)
@@ -73,7 +77,7 @@ Also, when you switch back to production and navigate to production **Storage Ex
 
 *Note: There is only one storage in your project, development buckets are created with a prefixed name, but are stored along normal buckets and are visible in production as well as in branch. You can see all buckets from all development branches in production.*
 
-Let's run the transformation again. What do you think will happen?
+Let's get back to our transformation and run it again. What do you think will happen?
 
 If you thought it will use the `bitcoin_prices` table from your branch as input, you were right.
 
@@ -84,7 +88,7 @@ Keboola checked whether development branch version of the bucket exists and as i
 
 ## Extend the transformation
 
-Now add a second code block named `Dollar values of transactions` and insert the following SQL
+Now add a second code to `Block 1` named `Dollar values of transactions` and insert the following SQL
 
 ```sql
 CREATE TABLE "dollar_btc_transactions" AS 
@@ -100,7 +104,17 @@ LEFT JOIN
         ON BP.DATE = BT.DATE;
 ```
 
-For the data to make it out of the transformation you need to add the newly created table to output mapping as well.
+We're loading the data from `bitcoin_transactions` table, so we need to add the table to input mapping.
+
+{: .image-popup}
+![Input mapping from branch data](/components/development-branches/transformation-branch-input-mapping.png)
+
+Notice the branch icon next to the table name. You're adding your development version of this table. In the actual input mapping you'll see the production version though. This is so that when the configuration is merged, you'll get the production table in input mapping. Don't be alarmed by the UI saying that the table does not exist. The UI will be improved in future versions.  
+
+{: .image-popup}
+![Input mapping from branch data](/components/development-branches/transformation-branch-input-mapping-missing.png)
+
+For the data to make it out of the transformation you need to add the created `dollar_btc_transactions` table to output mapping as well.
 
 {: .image-popup}
 ![Input mapping from branch data](/components/development-branches/output-mapping-branch-transformation.png)
