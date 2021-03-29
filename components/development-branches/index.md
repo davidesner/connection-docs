@@ -25,4 +25,4 @@ In the next steps, we will create and configure various components to demonstrat
 
 * [Working with tables](/components/development-branches/tables/)
 * [Working with files](/components/development-branches/files/)
-* [Merging branches](/components/development-branches/merge-to-production/)
+* [Merging branches](/components/development-branches/diff-and-merge/)

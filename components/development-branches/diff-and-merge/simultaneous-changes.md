@@ -1,9 +1,9 @@
 ---
 title: Handling simultaneous changes and conflicts
-permalink: /components/development-branches/merge/simultaneous-changes/
+permalink: /components/development-branches/diff-and-merge/simultaneous-changes/
 ---
 
-###   Simultaneous Changes
+### Simultaneous Changes
 
 Before we proceed to merging the development branch to the production project, there is one more scenario we need
 to mention here. While you are working in your development branch, someone else might be doing changes to your
@@ -11,6 +11,8 @@ production project at the same time.
 
 Let’s see what this might look like. Go to your production branch, to your transformation, and edit the variable
 `outFileContent`. Instead of `Hello world!` write `Hello tester!`, and then click on the blue check icon.
+
+*Note: If you skipped the [file manipulation part](/components/development-branches/files) of the tutorial, you'll need to change your Snowflake transformation instead of the Python transformation.*
 
 {: .image-popup}
 ![Screenshot - Edit Variable in Production](/components/development-branches/22-edit-var-in-prod.png)

@@ -32,12 +32,14 @@ Now it’s time to make the changes to the transformation and test them. Let’s
 **Transformations** and in **Shared Codes**, select *Create a file*. Then click **Edit Code** and **Let’s Change
 the Shared Code**.
 
-{% highlight sql %}
+{% highlight python %}
+{% raw %}
 f = open("out/files/{{ outFile }}", "a")
 f.write("{{ outFileContent }}")
 f.close()
 
 print("Output written to {{ outFile }}")
+{% endraw %}
 {% endhighlight %}
 
 {: .image-popup}
@@ -83,3 +85,7 @@ tag `demoOutput` without any prefix.
 
 {: .image-popup}
 ![Screenshot - Storage File in Production](/components/development-branches/21-storage-files-prod.png)
+
+If you go back to your development and run the transformation, it will create a new file `branchDemoFile.txt` as expected. 
+
+This concludes the file manipulation part of this tutorial. You can continue to the next part - [merging back to production](/components/development-branches/diff-and-merge). 
