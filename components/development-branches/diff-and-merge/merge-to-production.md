@@ -1,6 +1,6 @@
 ---
-title: Handling simultaneous changes and conflicts
-permalink: /components/development-branches/diff-and-merge/simultaneous-changes/
+title: Merge to production
+permalink: /components/development-branches/diff-and-merge/merge-to-production/
 ---
 
 Before we proceed to merging the development branch to the production project, there is one more scenario we need
@@ -83,4 +83,4 @@ If you examine the configuration diff, you'll see that you're back to the origin
 {: .image-popup}
 ![Screenshot - Match Change from Production](/components/development-branches/diff-after-reset.png)
 
-Now we can proceed to [merge the branch to production](/components/development-branches/diff-and-merge/merge-to-production/). 
+Now we can proceed to merge the branch to production. 
