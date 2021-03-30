@@ -3,84 +3,53 @@ title: Merge to production
 permalink: /components/development-branches/diff-and-merge/merge-to-production/
 ---
 
-Before we proceed to merging the development branch to the production project, there is one more scenario we need
-to mention here. While you are working in your development branch, someone else might be doing changes to your
-production project at the same time.
+Now we're finally at the point where we merge the branch to production. We can either do full or partial merge. We'll start with partial merge. 
 
-*Note: If you skipped the [file manipulation part](/components/development-branches/files) of the tutorial, you'll need to change your Snowflake transformation instead of the Python transformation.*
+## Partial merge
 
-Let’s see what this might look like. Go to your production branch, to your transformation, and edit the variable
-`outFileContent`. Instead of `Hello world!` write `Hello tester!`, and then click on the blue check icon.
-
-
-
-{: .image-popup}
-![Screenshot - Edit Variable in Production](/components/development-branches/22-edit-var-in-prod.png)
-
-Now we’ve made configuration changes in both branches. Switch back to the development branch and look at the
-project diff. You’ll see a **warning message** saying that there is a conflict between the two configurations.
-
-{: .image-popup}
-![Screenshot - Conflict Warning](/components/development-branches/23-conflict-warning.png)
-
-Click **Compare with production** to see the differences.
-
-{: .image-popup}
-![Screenshot - Configuration Changes Differences](/components/development-branches/24-config-changes-diff.png)
-
-The conflict here means that the production project changed while we were working in the development branch.
-`Hello world!` was changed to `Hello tester!`. If you merged the development project to production now,
-the development project would overwrite any changes made in production. In our case, `Hello tester!` would become
-`Hello world!` again.
-
-## Resolve Conflicts
-To resolve the conflict and merge the development branch to production safely without overwriting anything new, you have two options. First, you can just change the branch configuration to have an expected diff against the production. Or you can reset the branch configuration to production version and apply you changes again - this is the better and safer option. 
-
-### Changing the config manually to match production
-
-Let's try the unsafe option - changing your branch config to match changes in production. It has the advantage that you don't lose your changes and don't need to reapply them. The disadvantage is that the configuration will remain marked as conflict and therefore you won't know if there is another conflict unless you check the diff. 
-
-Examine the following diff. 
-
-{: .image-popup}
-![Screenshot - Configuration Changes Differences](/components/development-branches/24-config-changes-diff.png)
-
-The production changes are marked red, and your local are marked green. The change to `outFile` is expected - that's our change in the branch. The change to `outFileContent` is the one that is unexpected. You can see that red (production) says `Hello tester!` and green (branch) shows `Hello world!`. To align the configurations, navigate to the transformation in branch and change the variable from `Hello world!` to `Hello tester!`.
-
-{: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/25-match-change-in-prod.png)
-
-Navigate to the dashboard and look at the project diff again.
-
-{: .image-popup}
-![Screenshot - Remaining Changes Diff](/components/development-branches/26-config-remaining-changes-diff.png)
-
-As you can see the configuration is still in conflict (because it's changed both in branch and in production). If you compare the configuration with production you'll see that there is only the expected change. 
-
-{: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/conflict-diff-after-reconciliation.png)
-
-Unfortunately you'll need to manually examine the diff before merging to make sure that the conflict is still only the expected diff and that no one changed the configuration in production in the meantime. To work around this, you can use the second way of handling the conflicts.  
-
-### Reset the configuration to production version and reapply changes
-
-This option is safer because it will not mark your configuration as conflict anymore and therefore if it later turns into a conflict, you'll know that someone changed the production again. The downside is that you'll lose whatever changes you made to the configuration in the branch, and you'll need to do them again. We understand this is not ideal and will work to improve it in the future versions. 
-
-To reset, you first need to somehow store the changes you made to the configuration (copypasting the diff into an editor or taking a screenshot is the simplest solution). Then you select **Reset changes**. 
-
-{: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/reset-changes.png)
-
-By this the conflict and also the diff will completely disappear, and your configuration will be the same as production. Now you need to navigate to the transformation and do the conflicting change again. That means, change the `outFile` variable to `branchDemoFile.txt`.
-
-If you now examine the project diff, you'll see that you again have 4 changes and no conflict. 
+First, let's examine the project diff further. 
 
 {: .image-popup}
 ![Screenshot - Match Change from Production](/components/development-branches/project-diff-after-reset.png)
 
-If you examine the configuration diff, you'll see that you're back to the original diff where you only have a change in the `outFile` variable definition. 
+You can see there are checkboxes to the left of each configuration in the list. This allows you to merge one a subset of the changes. So let's say we only want to merge the HTTP extractor change regarding bitcoin transactions. Uncheck all the checkboxes except the one near the **"Bitcoin" http extractor**.
+
+*Note: **Don't click the merge button** when you click Merge to production in the next step unless you uncheck the checkbox. If you accidently do you'll need to recreate the whole branch.*  
+
+Click **Merge to production** and in the modal uncheck the *Delete current development branch after merge.* checkbox. Only then click the **Merge** button.
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/diff-after-reset.png)
+![Screenshot - Match Change from Production](/components/development-branches/partial-merge-dialog.png)
 
-Now we can proceed to merge the branch to production. 
+When you do a progress bar will show up informing you of the progress of the merge. When the merge is finished, you will see only 3 changed configurations in your branch.
+
+{: .image-popup}
+![Screenshot - Match Change from Production](/components/development-branches/partially-merged-branch.png)
+
+Switch to production and examine the HTTP extractor configuration. Notice that a new version has been created with the merge message as change description. 
+
+{: .image-popup}
+![Screenshot - Match Change from Production](/components/development-branches/merged-http-ex-version.png)
+
+If you go to **Storage**, you'll see that the bucket used by this configuration still only has the `bitcoin_price` table and the `bitcoin_transactions` table is missing, even though you had it in your branch and you merged the config. This is expected. Branch storage is completely isolated and no data are merged back to production. You need to run the extractor in production to get the data in production **Storage**.
+
+While you're in the **Storage** section, examine that the branch buckets are still available if you toggle the switch to show development branch buckets. 
+
+### Full merge
+
+Switch back to your branch. Merge the remaining configurations, also keep the *Delete current development branch after merge.* checkbox checked. The merge will take slightly longer as the whole branch is being deleted. Afterwards you'll be redirected back to production.
+
+{: .image-popup}
+![Screenshot - Match Change from Production](/components/development-branches/branch-deleted.png)
+
+Examine the merged configurations, try running them and examine the results. 
+
+You'll notice that the Python transformation will fail with the following error: *File 'demoFile.txt' not found.*
+
+What happened? When we changed the output file to `branchDemoFile.txt` we forgot to run the transformation in the branch and just thought it would work. To make it work **File Ouput Mapping** of the transformation needs to be changed as well! What can we learn from that? That we should always make sure we tested the changes made in branch before merging it. 
+
+You have all the skills now to create a branch yourself and fix the output mapping. 
+
+## Tada! You did it. 
+
+This concludes the tutorial. You learned how to create branches, how tables and files work in branches, and we did a walkthrough of different scenarios when merging a branch. You also learned how to handle conflicts. You also learned a valuable lesson to always run your configuration in develpment branch before merging them back to production. 
