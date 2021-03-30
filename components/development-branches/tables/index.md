@@ -16,7 +16,7 @@ First we need to pull the bitcoin data. To simplify this, we will download a [pr
 
 ## Set up http extractor in production
 
-Create new HTTP extractor configuration, fill in **Base URL** to `https://help.keboola.com`. Then add new table to the extractor, named `bitcoin_price` and fill the **Path** to `/transformations/dev-prod-mode/bitcoin_price.csv`. **Table Name** should be `bitcoin_price`.
+Create new HTTP extractor configuration, fill in **Base URL** to `https://help.keboola.com`. Then add new table to the extractor, named `bitcoin_price` and fill the **Path** to `components/development-branches/bitcoin_price.csv`. **Table Name** should be `bitcoin_price`.
 
 {: .image-popup}
 ![Prepared HTTP extractor](/components/development-branches/http-ex-prod-set-up.png)

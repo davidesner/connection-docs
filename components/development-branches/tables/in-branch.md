@@ -58,7 +58,7 @@ This part of your task is done. Let's get to the second part.
 
 Second part of your task is to produce a list of transaction showing the amount in both BTC and in USD. So you need to download the account data first. Again, we [prepared csv file](/components/development-branches/bitcoin_transactions.csv) for you.
 
-In the branch navigate to your existing HTTP extractor configuration and add a new table named `bitcoin_transactions` and fill **Path** with `/transformations/dev-prod-mode/bitcoin_transactions.csv`. Save and run the extractor.
+In the branch navigate to your existing HTTP extractor configuration and add a new table named `bitcoin_transactions` and fill **Path** with `/components/development-branches/bitcoin_transactions.csv`. Save and run the extractor.
 
 Examine the job outputs. There are tables with branch icon in a bucket prefixed with a number. As we've already shown, this signifies that the output was stored in branch context, keeping your production data intact.  
 

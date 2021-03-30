@@ -6,16 +6,16 @@ permalink: /components/development-branches/
 * TOC
 {:toc}
   
-The feature Development/Production Mode enables you to develop code above your production data without affecting
+The Develpment branches feature enables you to develop code above your production data without affecting
 or endangering the data in any way. It works as a version system where you create a new branch, make changes
 in it, and run your configurations as needed. Output data is stored separately and does not overwrite your
 production data.
 
-In this tutorial, we will show you how Development/Production Mode works, what the process of developing in
+In this tutorial, we will show you how development branches work, what the process of developing in
 a branch looks like, and what you need to do before you can start.
 
 ## Private Beta Warning
-Development/Production Mode is currently in private beta. Some features may not work as expected. Please bear
+Development branches are currently in private beta. Some features may not work as expected. Please bear
 with us while we polish all necessities. Any feedback is welcome at [https://ideas.keboola.com](https://ideas.keboola.com).
 
 ## Before You Start

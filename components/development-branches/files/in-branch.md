@@ -80,7 +80,7 @@ version of the shared code.
 ![Screenshot - Check Variable In Production](/components/development-branches/20-check-block1.png)
 
 To make sure nothing has changed, run the transformation in production again. When it finishes, go to **Storage --
-Files**. You can see that `demoFile.txt` was created. Because it ran in production mode, it was assigned the
+Files**. You can see that `demoFile.txt` was created. Because it ran in production, it was assigned the
 tag `demoOutput` without any prefix.
 
 {: .image-popup}
