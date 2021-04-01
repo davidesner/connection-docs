@@ -35,6 +35,31 @@ items:
       - url: /tutorial/ad-hoc/
         title: Part 5 - Ad-hoc data analysis
 
+      - url: /tutorial/branches/
+        title: Development branches
+        items:
+
+          - url: /tutorial/branches/prepare-tables/
+            title: Prepare tables
+
+          - title: Tables in branch
+            url: /tutorial/branches/tables-in-branch/
+
+          - url: /tutorial/branches/prepare-files/
+            title: Prepare files
+
+          - title: Working with files in development branch
+            url: /tutorial/branches/files-in-branch/
+
+          - url: /tutorial/branches/project-diff/
+            title: Project diff
+
+          - title: Handling simultaneous changes and conflicts
+            url: /tutorial/branches/simultaneous-changes/
+
+          - title: Merge to production
+            url: /tutorial/branches/merge-to-production/
+
   - url: /components/
     title: Components
     items:
@@ -259,31 +284,6 @@ items:
 
       - url: /components/scaffolds/
         title: Scaffolds
-
-      - url: /components/development-branches/
-        title: Development branches
-        items:
-
-        - url: /components/development-branches/prepare-tables/
-          title: Prepare tables
-
-        - title: Tables in branch
-          url: /components/development-branches/tables-in-branch/
-
-        - url: /components/development-branches/prepare-files/
-          title: Prepare files
-
-        - title: Working with files in development branch
-          url: /components/development-branches/files-in-branch/
-
-        - url: /components/development-branches/project-diff/
-          title: Project diff
-
-        - title: Handling simultaneous changes and conflicts
-          url: /components/development-branches/simultaneous-changes/
-
-        - title: Merge to production
-          url: /components/development-branches/merge-to-production/
 
       - url: /components/ip-addresses/
         title: IP Addresses

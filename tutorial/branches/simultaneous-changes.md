@@ -1,13 +1,13 @@
 ---
 title: Handling simultaneous changes and conflicts
-permalink: /components/development-branches/simultaneous-changes/
+permalink: /tutorial/branches/simultaneous-changes/
 ---
 
 Before we proceed to merging the development branch to the production project, there is one more scenario we need
 to mention here. While you are working in your development branch, someone else might be doing changes to your
 production project at the same time.
 
-*Note: If you skipped the [file manipulation part](/components/development-branches/prepare-files) of the tutorial, you'll need to change your Snowflake transformation instead of the Python transformation.*
+*Note: If you skipped the [file manipulation part](/tutorial/branches/prepare-files) of the tutorial, you'll need to change your Snowflake transformation instead of the Python transformation.*
 
 Let’s see what this might look like. Go to your production branch, to your transformation, and edit the variable
 `outFileContent`. Instead of `Hello world!` write `Hello tester!`, and then click on the blue check icon.
@@ -15,18 +15,18 @@ Let’s see what this might look like. Go to your production branch, to your tra
 
 
 {: .image-popup}
-![Screenshot - Edit Variable in Production](/components/development-branches/22-edit-var-in-prod.png)
+![Screenshot - Edit Variable in Production](/tutorial/branches/22-edit-var-in-prod.png)
 
 Now we’ve made configuration changes in both branches. Switch back to the development branch and look at the
 project diff. You’ll see a **warning message** saying that there is a conflict between the two configurations.
 
 {: .image-popup}
-![Screenshot - Conflict Warning](/components/development-branches/23-conflict-warning.png)
+![Screenshot - Conflict Warning](/tutorial/branches/23-conflict-warning.png)
 
 Click **Compare with production** to see the differences.
 
 {: .image-popup}
-![Screenshot - Configuration Changes Differences](/components/development-branches/24-config-changes-diff.png)
+![Screenshot - Configuration Changes Differences](/tutorial/branches/24-config-changes-diff.png)
 
 The conflict here means that the production project changed while we were working in the development branch.
 `Hello world!` was changed to `Hello tester!`. If you merged the development project to production now,
@@ -43,22 +43,22 @@ Let's try the unsafe option - changing your branch config to match changes in pr
 Examine the following diff. 
 
 {: .image-popup}
-![Screenshot - Configuration Changes Differences](/components/development-branches/24-config-changes-diff.png)
+![Screenshot - Configuration Changes Differences](/tutorial/branches/24-config-changes-diff.png)
 
 The production changes are marked red, and your local are marked green. The change to `outFile` is expected - that's our change in the branch. The change to `outFileContent` is the one that is unexpected. You can see that red (production) says `Hello tester!` and green (branch) shows `Hello world!`. To align the configurations, navigate to the transformation in branch and change the variable from `Hello world!` to `Hello tester!`.
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/25-match-change-in-prod.png)
+![Screenshot - Match Change from Production](/tutorial/branches/25-match-change-in-prod.png)
 
 Navigate to the dashboard and look at the project diff again.
 
 {: .image-popup}
-![Screenshot - Remaining Changes Diff](/components/development-branches/26-config-remaining-changes-diff.png)
+![Screenshot - Remaining Changes Diff](/tutorial/branches/26-config-remaining-changes-diff.png)
 
 As you can see the configuration is still in conflict (because it's changed both in branch and in production). If you compare the configuration with production you'll see that there is only the expected change. 
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/conflict-diff-after-reconciliation.png)
+![Screenshot - Match Change from Production](/tutorial/branches/conflict-diff-after-reconciliation.png)
 
 Unfortunately you'll need to manually examine the diff before merging to make sure that the conflict is still only the expected diff and that no one changed the configuration in production in the meantime. To work around this, you can use the second way of handling the conflicts.  
 
@@ -69,18 +69,18 @@ This option is safer because it will not mark your configuration as conflict any
 To reset, you first need to somehow store the changes you made to the configuration (copypasting the diff into an editor or taking a screenshot is the simplest solution). Then you select **Reset changes**. 
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/reset-changes.png)
+![Screenshot - Match Change from Production](/tutorial/branches/reset-changes.png)
 
 By this the conflict and also the diff will completely disappear, and your configuration will be the same as production. Now you need to navigate to the transformation and do the conflicting change again. That means, change the `outFile` variable to `branchDemoFile.txt`.
 
 If you now examine the project diff, you'll see that you again have 4 changes and no conflict. 
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/project-diff-after-reset.png)
+![Screenshot - Match Change from Production](/tutorial/branches/project-diff-after-reset.png)
 
 If you examine the configuration diff, you'll see that you're back to the original diff where you only have a change in the `outFile` variable definition. 
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/components/development-branches/diff-after-reset.png)
+![Screenshot - Match Change from Production](/tutorial/branches/diff-after-reset.png)
 
-Now we can proceed to [merge the branch to production](/components/development-branches/merge-to-production/). 
+Now we can proceed to [merge the branch to production](/tutorial/branches/merge-to-production/). 
