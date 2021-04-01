@@ -1,6 +1,6 @@
 ---
 title: Merge to production
-permalink: /components/development-branches/diff-and-merge/merge-to-production/
+permalink: /components/development-branches/merge-to-production/
 ---
 
 Now we're finally at the point where we merge the branch to production. We can either do full or partial merge. We'll start with partial merge. 

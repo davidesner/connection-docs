@@ -1,6 +1,6 @@
 ---
 title: Working with tables in development branch
-permalink: /components/development-branches/tables/in-branch/
+permalink: /components/development-branches/tables-in-branch/
 ---
 
 * TOC
@@ -130,5 +130,5 @@ This means that the second part of your task is done. All the work you did is no
 
 You can now choose. You can:
 
-* take the next step and learn about [how files work in development branches](/components/development-branches/files/)
-* skip ahead and learn about [how changes in a branch are merged back to production](/components/development-branches/diff-and-merge)
+* take the next step and learn about [how files work in development branches](/components/development-branches/prepare-files/)
+* skip ahead and learn about [how changes in a branch are merged back to production](/components/development-branches/project-diff)

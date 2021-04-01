@@ -1,6 +1,6 @@
 ---
-title: Diff & Merge
-permalink: /components/development-branches/diff-and-merge/
+title: Project diff
+permalink: /components/development-branches/project-diff/
 ---
 
 ### Show Project Diff
@@ -16,4 +16,4 @@ To see a detailed diff of the changes to `Variables definition for keboola.pytho
 
 Note the message above the project diff. It says that your production storage will not be affected by that merge. This means that tables will not be created in production unless you run the configurations that created them and no data will be transfered from branch to production. You need to keep that in mind - for example if you were to drop a column on a table in the branch, you need to drop that column on the production table as well.
 
-In the next part we'll look at a fairly common scenario of [simultaneous or conflicting changes between production and a branch](/components/development-branches/diff-and-merge/simultaneous-changes).
+In the next part we'll look at a fairly common scenario of [simultaneous or conflicting changes between production and a branch](/components/development-branches/simultaneous-changes).

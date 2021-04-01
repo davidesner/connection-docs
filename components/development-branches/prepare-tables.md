@@ -1,6 +1,6 @@
 ---
-title: Working with tables in branches
-permalink: /components/development-branches/tables/
+title: Prepare tables
+permalink: /components/development-branches/prepare-tables/
 ---
 
 * TOC
@@ -45,4 +45,4 @@ ALTER TABLE "top5" DROP COLUMN "_timestamp";
 
 Save the transformation and run it. Then verify that there is a new table `out.c-bitcoin.top5` containing 5 values from the source data - dates and amounts when bitcoin had the most value.
 
-Now you have the production set up and we can give branches a test run in the next part of the tutorial - [Working with tables in development branch](/components/development-branches/tables/in-branch/).
+Now you have the production set up and we can give branches a test run in the next part of the tutorial - [Working with tables in development branch](/components/development-branches/tables-in-branch/).

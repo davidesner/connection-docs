@@ -1,6 +1,6 @@
 ---
-title: Working with files in branches
-permalink: /components/development-branches/files/
+title: Prepare transformations
+permalink: /components/development-branches/prepare-files/
 ---
 
 * TOC
@@ -73,4 +73,4 @@ After the job is finished, go to **Storage -- Files**, where you can see the fil
 {: .image-popup}
 ![Screenshot - Generated File ](/components/development-branches/07-generated-file.png)
 
-Now you have everything ready. You can proceed to the next step - [working in a branch](/components/development-branches/files/in-branch/). 
+Now you have everything ready. You can proceed to the next step - [working in a branch](/components/development-branches/files-in-branch/). 

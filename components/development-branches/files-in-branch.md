@@ -1,12 +1,12 @@
 ---
 title: Working with files in development branch
-permalink: /components/development-branches/files/in-branch/
+permalink: /components/development-branches/files-in-branch/
 ---
 
 * TOC
 {:toc}
 
-Create a new development branch. If you skipped the first part of the tutorial regarding tables, you can find [the instructions for creating a branch](http://localhost:4000/components/development-branches/tables/in-branch/#create-a-new-branch) there. In your development branch, let’s run the same transformation you ran in the production branch.
+Create a new development branch. If you skipped the first part of the tutorial regarding tables, you can find [the instructions for creating a branch](http://localhost:4000/components/development-branches/tables-in-branch/#create-a-new-branch) there. In your development branch, let’s run the same transformation you ran in the production branch.
 
 ## Run the transformation in development branch 
 
@@ -88,4 +88,4 @@ tag `demoOutput` without any prefix.
 
 If you go back to your development and run the transformation, it will create a new file `branchDemoFile.txt` as expected. 
 
-This concludes the file manipulation part of this tutorial. You can continue to the next part - [merging back to production](/components/development-branches/diff-and-merge). 
+This concludes the file manipulation part of this tutorial. You can continue to the next part - [merging back to production](/components/development-branches/project-diff). 
