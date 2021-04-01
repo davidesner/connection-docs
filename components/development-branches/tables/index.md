@@ -6,7 +6,8 @@ permalink: /components/development-branches/tables/
 * TOC
 {:toc}
 
-In this section we'll examine how tables are affected by development branches. First we'll create different configurations. Then we'll create a development branch where we make some changes. Finally we'll merge the changes back to production. 
+In this section you will prepare [component configurations](tood) so that you can use them to create a [development Branch](todo).
+The [following section](/components/development-branches/tables/in-branch/) then shows how to work with [Storage tables](todo) inside a Branch.
 
 ## Prepare the production configurations
 
