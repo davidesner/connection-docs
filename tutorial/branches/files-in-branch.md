@@ -59,7 +59,7 @@ You can see in the job log that you used this new block.
 The file was uploaded to Storage again.
 
 Now change the name of the output file. To do that, go to your transformation and change the value of the variable
-`outFile` from `demoFile.txt` to `demoBranchFile.txt`. Then click the little check mark icon on the right.
+`outFile` from `demoFile.txt` to `demoBranchFile.txt`. Then click the little check mark icon on the right. Don't forget to change the **File Output Mapping** of the transformation as well!  
 
 {: .image-popup}
 ![Screenshot - Edit Variable in Development Branch](/tutorial/branches/figures/15-edit-var-in-dev.png)

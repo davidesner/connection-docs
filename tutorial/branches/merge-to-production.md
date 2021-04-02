@@ -44,12 +44,6 @@ Switch back to your branch. Merge the remaining configurations, also keep the *D
 
 Examine the merged configurations, try running them and examine the results. 
 
-You'll notice that the Python transformation will fail with the following error: *File 'demoFile.txt' not found.*
-
-What happened? When we changed the output file to `branchDemoFile.txt` we forgot to run the transformation in the branch and just thought it would work. To make it work **File Ouput Mapping** of the transformation needs to be changed as well! What can we learn from that? That we should always make sure we tested the changes made in branch before merging it. 
-
-You have all the skills now to create a branch yourself and fix the output mapping. 
-
 ## Tada! You did it. 
 
-This concludes the tutorial. You learned how to create branches and how tables and files work in branches. You learned about different scenarios when merging a branch and how to handle conflicting changes. You also learned a valuable lesson to always run your configuration in develpment branch before merging them back to production. 
+This concludes the tutorial. You learned how to create branches and how tables and files work in branches. You learned about different scenarios when merging a branch and how to handle conflicting changes. 
