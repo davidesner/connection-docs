@@ -36,7 +36,7 @@ items:
         title: Part 5 - Ad-hoc data analysis
 
       - url: /tutorial/branches/
-        title: Development branches
+        title: Part 6 - Development branches
         items:
 
           - url: /tutorial/branches/prepare-tables/
