@@ -10,7 +10,7 @@ Now we're finally at the point where we merge the branch to production. We can e
 First, let's examine the project diff further. 
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/tutorial/branches/project-diff-after-reset.png)
+![Screenshot - Match Change from Production](/tutorial/branches/figures/project-diff-after-reset.png)
 
 You can see there are checkboxes to the left of each configuration in the list. This allows you to merge one a subset of the changes. So let's say we only want to merge the HTTP extractor change regarding bitcoin transactions. Uncheck all the checkboxes except the one near the **"Bitcoin" http extractor**.
 
@@ -19,17 +19,17 @@ You can see there are checkboxes to the left of each configuration in the list. 
 Click **Merge to production** and in the modal uncheck the *Delete current development branch after merge.* checkbox. Only then click the **Merge** button.
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/tutorial/branches/partial-merge-dialog.png)
+![Screenshot - Match Change from Production](/tutorial/branches/figures/partial-merge-dialog.png)
 
 When you do a progress bar will show up informing you of the progress of the merge. When the merge is finished, you will see only 3 changed configurations in your branch.
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/tutorial/branches/partially-merged-branch.png)
+![Screenshot - Match Change from Production](/tutorial/branches/figures/partially-merged-branch.png)
 
 Switch to production and examine the HTTP extractor configuration. Notice that a new version has been created with the merge message as change description. 
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/tutorial/branches/merged-http-ex-version.png)
+![Screenshot - Match Change from Production](/tutorial/branches/figures/merged-http-ex-version.png)
 
 If you go to **Storage**, you'll see that the bucket used by this configuration still only has the `bitcoin_price` table and the `bitcoin_transactions` table is missing, even though you had it in your branch and you merged the config. This is expected. Branch storage is completely isolated and no data are merged back to production. You need to run the extractor in production to get the data in production **Storage**.
 
@@ -40,7 +40,7 @@ While you're in the **Storage** section, examine that the branch buckets are sti
 Switch back to your branch. Merge the remaining configurations, also keep the *Delete current development branch after merge.* checkbox checked. The merge will take slightly longer as the whole branch is being deleted. Afterwards you'll be redirected back to production.
 
 {: .image-popup}
-![Screenshot - Match Change from Production](/tutorial/branches/branch-deleted.png)
+![Screenshot - Match Change from Production](/tutorial/branches/figures/branch-deleted.png)
 
 Examine the merged configurations, try running them and examine the results. 
 

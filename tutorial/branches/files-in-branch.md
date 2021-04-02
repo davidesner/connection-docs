@@ -13,7 +13,7 @@ Create a new development branch. If you skipped the first part of the tutorial r
 In your development branch, go to **Transformations**, select the transformation *Testing dev/prod mode* and run it.
 
 {: .image-popup}
-![Screenshot - Run Transformation in Development Branch](/tutorial/branches/11-option-edit-vars.png)
+![Screenshot - Run Transformation in Development Branch](/tutorial/branches/figures/11-option-edit-vars.png)
 
 Notice that there is an option to edit the variables in the *Variables* dropdown box before you run
 the configuration. But we don’t need this now.
@@ -25,7 +25,7 @@ this branch. You can also see the ID in the URL. This is how the development bra
 the files that were created in the production environment.
 
 {: .image-popup}
-![Screenshot - Development Branch Output](/tutorial/branches/12-dev-branch-output.png)
+![Screenshot - Development Branch Output](/tutorial/branches/figures/12-dev-branch-output.png)
 
 ## Change Configuration
 Now it’s time to make the changes to the transformation and test them. Let’s add a bit of code first. Go to
@@ -43,7 +43,7 @@ print("Output written to {{ outFile }}")
 {% endhighlight %}
 
 {: .image-popup}
-![Screenshot - Edit Shared Code](/tutorial/branches/13-edit-shared-code-in-dev.png)
+![Screenshot - Edit Shared Code](/tutorial/branches/figures/13-edit-shared-code-in-dev.png)
 
 The transformation will do exactly the same as before, but it will add `Output written to demoFile.txt` to
 the output. Save the shared code. Go back to **Transformations**, select the transformation *Testing dev/prod
@@ -52,7 +52,7 @@ mode*, and run the component again.
 You can see in the job log that you used this new block.
 
 {: .image-popup}
-![Screenshot - Job Log](/tutorial/branches/14-jobs-log.png)
+![Screenshot - Job Log](/tutorial/branches/figures/14-jobs-log.png)
 
 The file was uploaded to Storage again.
 
@@ -60,7 +60,7 @@ Now change the name of the output file. To do that, go to your transformation an
 `outFile` from `demoFile.txt` to `demoBranchFile.txt`. Then click the little check mark icon on the right.
 
 {: .image-popup}
-![Screenshot - Edit Variable in Development Branch](/tutorial/branches/15-edit-var-in-dev.png)
+![Screenshot - Edit Variable in Development Branch](/tutorial/branches/figures/15-edit-var-in-dev.png)
 
 ## Switch Back to Production
 Let’s go back to production to see that by changing the transformation in the development branch, we did not
@@ -71,20 +71,20 @@ Go to **Transformations** and check **Shared Codes** to see that there is still 
 branch.
 
 {: .image-popup}
-![Screenshot - Check Shared Code In Production](/tutorial/branches/19-check-shared-code.png)
+![Screenshot - Check Shared Code In Production](/tutorial/branches/figures/19-check-shared-code.png)
 
 Then go to your production transformation and check **Block 1** to see that there, too, is the original short
 version of the shared code.
 
 {: .image-popup}
-![Screenshot - Check Variable In Production](/tutorial/branches/20-check-block1.png)
+![Screenshot - Check Variable In Production](/tutorial/branches/figures/20-check-block1.png)
 
 To make sure nothing has changed, run the transformation in production again. When it finishes, go to **Storage --
 Files**. You can see that `demoFile.txt` was created. Because it ran in production, it was assigned the
 tag `demoOutput` without any prefix.
 
 {: .image-popup}
-![Screenshot - Storage File in Production](/tutorial/branches/21-storage-files-prod.png)
+![Screenshot - Storage File in Production](/tutorial/branches/figures/21-storage-files-prod.png)
 
 If you go back to your development and run the transformation, it will create a new file `branchDemoFile.txt` as expected. 
 

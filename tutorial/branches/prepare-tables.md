@@ -20,7 +20,7 @@ First we need to pull the bitcoin data. To simplify this, we will download a [pr
 Create new HTTP extractor configuration, fill in **Base URL** to `https://help.keboola.com`. Then add new table to the extractor, named `bitcoin_price` and fill the **Path** to `components/development-branches/bitcoin_price.csv`. **Table Name** should be `bitcoin_price`.
 
 {: .image-popup}
-![Prepared HTTP extractor](/tutorial/branches/http-ex-prod-set-up.png)
+![Prepared HTTP extractor](/tutorial/branches/figures/http-ex-prod-set-up.png)
 
 Run the extractor and verify that a new table `in.c-keboola-ex-http-682373219.bitcoin_price` was created.
 
@@ -41,7 +41,7 @@ ALTER TABLE "top5" DROP COLUMN "_timestamp";
 ```
 
 {: .image-popup}
-![Prepared HTTP extractor](/tutorial/branches/transformation-prod-set-up.png)
+![Prepared HTTP extractor](/tutorial/branches/figures/transformation-prod-set-up.png)
 
 Save the transformation and run it. Then verify that there is a new table `out.c-bitcoin.top5` containing 5 values from the source data - dates and amounts when bitcoin had the most value.
 
