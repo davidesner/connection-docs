@@ -3,6 +3,8 @@ title: Project diff
 permalink: /tutorial/branches/project-diff/
 ---
 
+In the previous parts you tested how [files](/tutorial/branches/files-in-branch/) and [tables](/tutorial/branches/tables-in-branch/) behave in branches. Now it's time to complete the branch lifecycle and merge the development branch back to production. 
+
 ### Show Project Diff
 First, you want to check what are the things that you changed against the production. Go to the dashboard and click the button **Show Project Diff** on the right. There you can see the things you’ve changed.
 

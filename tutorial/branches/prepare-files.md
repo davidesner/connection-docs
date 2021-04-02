@@ -6,11 +6,11 @@ permalink: /tutorial/branches/prepare-files/
 * TOC
 {:toc}
 
-In this section we'll examine how files behave in development branches. First we'll create the production configuration, after that we'll edit it in a branch. Finally, we'll merge the changes back to production.  
+In the [previous section](/tutorial/branches/tables-in-branch/) you created a branch from configurations in production and you tested how tables behave in branches. In this section you'll learn how [files](/storage/files/) behave in development branches. First you'll create the production configurations, after that you'll edit it in a branch. 
 
 ## Prepare the production configurations
 
-We'll create a production Python transformation with a simple code first. 
+You'll create a production Python transformation with a simple code first. 
 
 ##  Create Transformation
 In your testing project, create a new **Python** transformation and name it, for instance, *Testing dev/prod mode*.
@@ -73,4 +73,4 @@ After the job is finished, go to **Storage -- Files**, where you can see the fil
 {: .image-popup}
 ![Screenshot - Generated File ](/tutorial/branches/figures/07-generated-file.png)
 
-Now you have everything ready. You can proceed to the next step - [working in a branch](/tutorial/branches/files-in-branch/). 
+Now you have everything ready, you created production configuration using shared codes that creates files in storage. You can proceed to the next step - [working with files in a branch](/tutorial/branches/files-in-branch/). 

@@ -6,6 +6,8 @@ permalink: /tutorial/branches/tables-in-branch/
 * TOC
 {:toc}
 
+In the [previous section](/tutorial/branches/prepare-tables/) you prepared the configurations in production. In this section you'll manipulate the configurations, run them and learn about how tables behave in branches.  
+
 **Your task is following:**
 
 > The amount of 5 top values is too low, it should be top 10. Also, you were given access to your company's bitcoin account history and you're tasked with converting the amounts of bitcoin to dolar amounts based on the value of bitcoin on the given day.
@@ -126,9 +128,9 @@ Run the updated transformation and examine the results.
 
 As you can see, this run of the transformation accessed only branch buckets. It loaded the data from HTTP extractor from branch bucket as input and stored the output in two tables in another branch bucket. You can also examine the data in the tables to see that you indeed created a list of transactions with their dollar amounts.
 
-This means that the second part of your task is done. All the work you did is now constrained in your branch, though. In production there is still the old code creating the TOP5 list. 
+This means that the second part of your task is done. You changed the production configurations in a branch. You verified that the none of the changes affected the production. You also run the configurations and created some branch data without affecting production data.  
 
-You can now choose. You can:
+You can now choose to:
 
-* take the next step and learn about [how files work in development branches](/tutorial/branches/prepare-files/)
-* skip ahead and learn about [how changes in a branch are merged back to production](/tutorial/branches/project-diff)
+* either take the next step and learn about [how files work in development branches](/tutorial/branches/prepare-files/)
+* or skip ahead and learn about [how changes in a branch are merged back to production](/tutorial/branches/project-diff)

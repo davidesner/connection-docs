@@ -51,9 +51,9 @@ To request to be a beta tester for this feature, please ask via the [support but
 To see how you can take advantage of branches, you can go through the following tutorial. You will configure various components that demonstrate the different aspects of branches.
 
 * Part 1 -- Working with tables
-    * [Preparing](/tutorial/branches/prepare-tables/)
+    * [Preparing configurations](/tutorial/branches/prepare-tables/)
     * [Working in Branch](/tutorial/branches/tables-in-branch)
 * Part 2 -- Working with files 
-    * [Preparing](/tutorial/branches/prepare-files/)
+    * [Preparing configurations](/tutorial/branches/prepare-files/)
     * [Working in Branch](/tutorial/branches/files-in-branch)
 * [Part 3 -- Merging branches](/tutorial/branches/project-diff/)

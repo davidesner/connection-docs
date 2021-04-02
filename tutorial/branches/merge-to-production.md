@@ -3,7 +3,7 @@ title: Merge to production
 permalink: /tutorial/branches/merge-to-production/
 ---
 
-Now we're finally at the point where we merge the branch to production. We can either do full or partial merge. We'll start with partial merge. 
+In the previous section you learned about [conflicting changes and how to resolve them](/tutorial/branches/simultaneous-changes/). Now you're finally at the point where you merge the branch to production. You can either do full or partial merge. Let's start with a partial merge. 
 
 ## Partial merge
 
@@ -52,4 +52,4 @@ You have all the skills now to create a branch yourself and fix the output mappi
 
 ## Tada! You did it. 
 
-This concludes the tutorial. You learned how to create branches, how tables and files work in branches, and we did a walkthrough of different scenarios when merging a branch. You also learned how to handle conflicts. You also learned a valuable lesson to always run your configuration in develpment branch before merging them back to production. 
+This concludes the tutorial. You learned how to create branches and how tables and files work in branches. You learned about different scenarios when merging a branch and how to handle conflicting changes. You also learned a valuable lesson to always run your configuration in develpment branch before merging them back to production. 

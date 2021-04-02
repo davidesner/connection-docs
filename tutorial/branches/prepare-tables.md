@@ -6,18 +6,18 @@ permalink: /tutorial/branches/prepare-tables/
 * TOC
 {:toc}
 
-In this section you will prepare [component configurations](tood) so that you can use them to create a [development Branch](todo).
-The [following section](/tutorial/branches/tables-in-branch/) then shows how to work with [Storage tables](todo) inside a Branch.
+In this section you will prepare [component configurations](/components/) so that you can use them to create a [development Branch](/tutorial/branches/).
+The [following section](/tutorial/branches/tables-in-branch/) then shows how to work with [Storage tables](/storage/tables/) inside a Branch.
 
 ## Prepare the production configurations
 
-We'll start with a data pipeline that pulls data about bitcoin prices, creates a list of TOP 5 dates when the price was the highest. Let's prepare the production configurations, so that we can try working with branches later.
+You'll start with a data pipeline that pulls data about bitcoin prices and creates a list of TOP 5 days when the price was the highest. Let's prepare the production configurations, so that you can try working with branches later.
 
-First we need to pull the bitcoin data. To simplify this, we will download a [prepared csv file](/tutorial/branches/bitcoin_price.csv) using HTTP extractor.
+First we need to pull the bitcoin data. To simplify this, we will download a [prepared csv file](/tutorial/branches/bitcoin_price.csv) using [HTTP extractor](/components/extractors/storage/http/).
 
 ## Set up http extractor in production
 
-Create new HTTP extractor configuration, fill in **Base URL** to `https://help.keboola.com`. Then add new table to the extractor, named `bitcoin_price` and fill the **Path** to `components/development-branches/bitcoin_price.csv`. **Table Name** should be `bitcoin_price`.
+Create new HTTP extractor configuration, fill in **Base URL** to `https://help.keboola.com`. Then add a new table to the extractor, named `bitcoin_price` and fill the **Path** to `components/development-branches/bitcoin_price.csv`. **Table Name** should be `bitcoin_price`.
 
 {: .image-popup}
 ![Prepared HTTP extractor](/tutorial/branches/figures/http-ex-prod-set-up.png)
@@ -28,7 +28,7 @@ Run the extractor and verify that a new table `in.c-keboola-ex-http-682373219.bi
 
 ## Prepare a transformation in production
 
-First create a new Snowflake transformation, named `Bitcoin`.
+First create a [new Snowflake transformation](/transformations/snowflake-plain/), named `Bitcoin`.
 
 In the **Table Input Mapping** section fill in the `bitcoin_price` table that you created using HTTP extractor. In **Table Output Mapping** add `top5` table that will be created in the transformation.
 

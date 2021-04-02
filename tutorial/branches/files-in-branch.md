@@ -6,7 +6,9 @@ permalink: /tutorial/branches/files-in-branch/
 * TOC
 {:toc}
 
-Create a new development branch. If you skipped the first part of the tutorial regarding tables, you can find [the instructions for creating a branch](http://localhost:4000/tutorial/branches/tables-in-branch/#create-a-new-branch) there. In your development branch, let’s run the same transformation you ran in the production branch.
+In the [previous section](/tutorial/branches/prepare-files/), you created production configurations that create files in storage. In this section, you'll create a new branch and examine how files behave in the context of branch. 
+
+Create a new development branch. If you skipped the first part of the tutorial regarding tables, you can find [the instructions for creating a branch](http://localhost:4000/tutorial/branches/tables-in-branch/#create-a-new-branch) there. In your development branch, let’s run the same Python transformation you ran in the production branch.
 
 ## Run the transformation in development branch 
 
@@ -88,4 +90,4 @@ tag `demoOutput` without any prefix.
 
 If you go back to your development and run the transformation, it will create a new file `branchDemoFile.txt` as expected. 
 
-This concludes the file manipulation part of this tutorial. You can continue to the next part - [merging back to production](/tutorial/branches/project-diff). 
+This concludes the file manipulation part of this tutorial. You examined how files and shared codes behave in branches. You can continue to the next part - [merging back to production](/tutorial/branches/project-diff). 
