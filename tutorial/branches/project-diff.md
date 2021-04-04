@@ -16,6 +16,9 @@ To see a detailed diff of the changes to `Variables definition for keboola.pytho
 {: .image-popup}
 ![Detailed diff of configuration change](/tutorial/branches/figures/18-diff-config-changes-var.png)
 
-Note the message above the project diff. It says that your production storage will not be affected by that merge. This means that tables will not be created in production unless you run the configurations that created them and no data will be transfered from branch to production. You need to keep that in mind - for example if you were to drop a column on a table in the branch, you need to drop that column on the production table as well.
+Note the message above the project diff. It says that your production storage will not be affected by that merge. This means that tables will not be created in production unless you run the configurations that created them and no data will be transferred from branch to production. 
+For example, the table `bitcoin_transactions` which you [created in branch](/tutorial/branches/tables-in-branch/#extend-the-transformation) will not be created in production and if the branch is deleted after merge, the table will be discarded as well. 
+
+You need to keep that in mind - for example if you were to drop a column on a table in the branch, you need to drop that column on the production table as well.
 
 In the next part we'll look at a fairly common scenario of [simultaneous or conflicting changes between production and a branch](/tutorial/branches/simultaneous-changes).

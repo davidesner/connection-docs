@@ -8,7 +8,11 @@ permalink: /tutorial/branches/files-in-branch/
 
 In the [previous section](/tutorial/branches/prepare-files/), you created production configurations that create files in storage. In this section, you'll create a new branch and examine how files behave in the context of branch. 
 
-Create a new development branch. If you skipped the first part of the tutorial regarding tables, you can find [the instructions for creating a branch](http://localhost:4000/tutorial/branches/tables-in-branch/#create-a-new-branch) there. In your development branch, let’s run the same Python transformation you ran in the production branch.
+Create a [new branch](/tutorial/branches/tables-in-branch/#create-a-new-branch). In your development branch, let’s run the 
+same Python transformation you ran in the production branch. 
+*Note that changes made in production are not reflected in the branches. That is the reason why you need to create another branch now, because the branch [created previously](/tutorial/branches/tables-in-branch/) will not contain the 
+[new transformation](/tutorial/branches/prepare-files/) working with files.*
+
 
 ## Run the transformation in development branch 
 

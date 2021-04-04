@@ -6,19 +6,18 @@ permalink: /tutorial/branches/prepare-files/
 * TOC
 {:toc}
 
-In the [previous section](/tutorial/branches/tables-in-branch/) you created a branch from configurations in production and you tested how tables behave in branches. In this section you'll learn how [files](/storage/files/) behave in development branches. First you'll create the production configurations, after that you'll edit it in a branch. 
+In the [previous section](/tutorial/branches/tables-in-branch/) you created a branch from configurations in production and you tested how tables behave in branches. In this section you'll learn how [Storage files](/storage/files/) behave in branches. First you'll create the production configurations, after that you'll edit it in a branch. 
 
 ## Prepare the production configurations
+You'll create a production Python transformation with a code that works with files. 
 
-You'll create a production Python transformation with a simple code first. 
-
-##  Create Transformation
-In your testing project, create a new **Python** transformation and name it, for instance, *Testing dev/prod mode*.
+### Create Transformation
+In your testing project, create a new [**Python** transformation](/transformations/python-plain/) and name it, for instance, *Testing dev/prod mode*.
 
 {: .image-popup}
 ![Screenshot - Create Transformation](/tutorial/branches/figures/01-new-transformation.png)
 
-## Create Shared Code
+### Create Shared Code
 Then go back to **Transformations** and prepare the following [shared code](/transformations/variables/#shared-code)
 in Python for the transformation. Name it *Create a file*.
 
@@ -38,7 +37,7 @@ Finally, enter two out variables `outFile`, `outFileContent`, and click **Create
 {: .image-popup}
 ![Screenshot - New Shared Code](/tutorial/branches/figures/02-new-shared-code.png)
 
-## Add Shared Code to Transformation
+### Add Shared Code to Transformation
 To add the new shared code to your transformation, go to your new transformation, scroll down to
 **Scripts -- Block 1**. Click **Select Shared Code** and select the code you have just created.
 Click **Use as Shared Code**.
@@ -54,7 +53,7 @@ Click to **initialize the variables** with empty values.
 {: .image-popup}
 ![Screenshot - Initialize Variables](/tutorial/branches/figures/04-initialize-variables.png)
 
-## Set Output Mapping
+### Set Output Mapping
 Now go to the section **File Output Mapping** and click **New File Output**. And because the output of the
 transformation will be the file `demoFile.txt`, let’s set it as *Source* and `demoOutput` as *Tags*. This means
 that the output will be stored in Storage as `demoFile.txt` with the tag `demoOutput`. Click **Add File Output**.
@@ -73,4 +72,4 @@ After the job is finished, go to **Storage -- Files**, where you can see the fil
 {: .image-popup}
 ![Screenshot - Generated File ](/tutorial/branches/figures/07-generated-file.png)
 
-Now you have everything ready, you created production configuration using shared codes that creates files in storage. You can proceed to the next step - [working with files in a branch](/tutorial/branches/files-in-branch/). 
+Now you have everything ready, you created production configuration using shared codes that creates files in storage. You can proceed to the next step -- [working with files in a branch](/tutorial/branches/files-in-branch/). 

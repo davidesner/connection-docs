@@ -30,7 +30,7 @@ the development project would overwrite any changes made in production. In our c
 `Hello world!` again.
 
 ## Resolve Conflicts
-To resolve the conflict and merge the development branch to production safely without overwriting anything new, you have two options. First, you can just change the branch configuration to have an expected diff against the production. Or you can reset the branch configuration to production version and apply you changes again - this is the better and safer option. 
+To resolve the conflict and merge the development branch to production safely without overwriting anything new, you have two options. Either you can just change the branch configuration to have an expected diff against the production. Or you can reset the branch configuration to production version and apply you changes again - this is the better and safer option. 
 
 ### Changing the config manually to match production
 

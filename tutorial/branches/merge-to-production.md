@@ -3,6 +3,9 @@ title: Merge to production
 permalink: /tutorial/branches/merge-to-production/
 ---
 
+* TOC
+{:toc}
+
 In the previous section you learned about [conflicting changes and how to resolve them](/tutorial/branches/simultaneous-changes/). Now you're finally at the point where you merge the branch to production. You can either do full or partial merge. Let's start with a partial merge. 
 
 ## Partial merge
@@ -12,16 +15,16 @@ First, let's examine the project diff further.
 {: .image-popup}
 ![Screenshot - Match Change from Production](/tutorial/branches/figures/project-diff-after-reset.png)
 
-You can see there are checkboxes to the left of each configuration in the list. This allows you to merge one a subset of the changes. So let's say we only want to merge the HTTP extractor change regarding bitcoin transactions. Uncheck all the checkboxes except the one near the **"Bitcoin" http extractor**.
+You can see there are checkboxes to the left of each configuration in the list. This allows you to merge a subset of the changes. So let's say we only want to merge the HTTP extractor change regarding bitcoin transactions. Uncheck all the checkboxes except the one near the **"Bitcoin" http extractor**.
 
-*Note: **Don't click the merge button** when you click Merge to production in the next step unless you uncheck the checkbox. If you accidently do you'll need to recreate the whole branch.*  
+**Uncheck** the *Delete current development branch after merge.* checkbox and only then click the **Merge** button.
 
-Click **Merge to production** and in the modal uncheck the *Delete current development branch after merge.* checkbox. Only then click the **Merge** button.
+*Note: If you merge the branch without unchecking the button you'll need to recreate the whole branch.*  
 
 {: .image-popup}
 ![Screenshot - Match Change from Production](/tutorial/branches/figures/partial-merge-dialog.png)
 
-When you do a progress bar will show up informing you of the progress of the merge. When the merge is finished, you will see only 3 changed configurations in your branch.
+When you merge the branch a progress bar will show up informing you of the progress of the merge. After the merge is finished, you will see only 3 changed configurations in your branch. The HTTP extractor configuration no longer differs.
 
 {: .image-popup}
 ![Screenshot - Match Change from Production](/tutorial/branches/figures/partially-merged-branch.png)
@@ -33,7 +36,7 @@ Switch to production and examine the HTTP extractor configuration. Notice that a
 
 If you go to **Storage**, you'll see that the bucket used by this configuration still only has the `bitcoin_price` table and the `bitcoin_transactions` table is missing, even though you had it in your branch and you merged the config. This is expected. Branch storage is completely isolated and no data are merged back to production. You need to run the extractor in production to get the data in production **Storage**.
 
-While you're in the **Storage** section, examine that the branch buckets are still available if you toggle the switch to show development branch buckets. 
+While you're in the **Storage** section, examine that the branch buckets are still available if you toggle the switch to show development branch buckets. They cannot be used by the production configurations however.
 
 ### Full merge
 
